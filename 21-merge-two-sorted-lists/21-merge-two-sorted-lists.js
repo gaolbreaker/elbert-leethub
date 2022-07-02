@@ -20,9 +20,12 @@ var mergeTwoLists = function(list1, list2) {
         return list1curr;
     }
     else if (list1curr.val <= list2curr.val) {
-        return new ListNode(list1curr.val, mergeTwoLists(list1curr.next, list2curr));
+        list1curr.next = mergeTwoLists(list1curr.next, list2curr);
+        return list1curr;
+        // return new ListNode(list1curr.val, mergeTwoLists(list1curr.next, list2curr));
     } else {
-        return new ListNode(list2curr.val, mergeTwoLists(list1curr, list2curr.next));
+        list2curr.next = mergeTwoLists(list1curr, list2curr.next);
+        return list2curr;
     }
     
 };
