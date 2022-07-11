@@ -35,6 +35,7 @@ var isSubsequence = function(s, t) {
     if (s.length === 0 || (s.length === 0 && t.length === 0)) {
         return true;
     }
+    
     let jStart = 0;
     
     for (let i = 0; i < s.length; i++) {
