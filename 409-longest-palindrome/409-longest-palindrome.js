@@ -3,26 +3,26 @@
  * @return {number}
  */
 var longestPalindrome = function(s) {
-  console.log(s.length);
-  let arr = s.split('');
+  // console.log(s.length);
+  // let arr = s.split('');
   const freq = {};
-  for (var i = 0; i < arr.length; i++) {
-    if (freq[arr[i]]) {
-      freq[arr[i]]++;
+  for (var i = 0; i < s.length; i++) {
+    if (freq[s[i]]) {
+      freq[s[i]]++;
     } else {
-      freq[arr[i]] = 1;
+      freq[s[i]] = 1;
     }
   }
-  console.log(JSON.stringify(freq));
-  // sum freqs
-  var sum = 0;
-  for (const letter in freq) {
-    sum += freq[letter];
-  }
-  console.log(sum);
+  // console.log(JSON.stringify(freq));
+  // // sum freqs
+  // var sum = 0;
+  // for (const letter in freq) {
+  //   sum += freq[letter];
+  // }
+  // console.log(sum);
   // iterate through the freq object and count the number of even properties
   let numberOfEvens = 0;
-  let hasOdds = false;
+  let hasOdds = 0;
   let numberOfOdds = 0;
   for (const letter in freq) {
     if (freq[letter] % 2 === 0) numberOfEvens += freq[letter];
