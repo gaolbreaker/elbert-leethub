@@ -17,9 +17,27 @@ var mySqrt = function(x) {
     return 1;
   }
   
-  for (let i = 1; i <= x; i++) {
-    if (i * i > x) {
-      return i - 1;
+  // for (let i = 1; i <= x; i++) {
+  //   console.log('i: ', i);
+  //   if (i * i > x) {
+  //     return i - 1;
+  //   }
+  // }
+  
+  let left = 1;
+  let mid = Math.floor(x / 2);
+  let high = x;
+  
+  while (left <= high) {
+    mid = Math.floor((high + left)/2);
+    if ((mid * mid === x) || ((mid * mid < x) && ((mid + 1) * (mid + 1) > x))) { 
+      return mid;
+    }
+    if (mid * mid < x) {
+      left = mid + 1;
+    }
+    if (mid * mid > x) {
+      high = mid - 1;
     }
   }
 };
