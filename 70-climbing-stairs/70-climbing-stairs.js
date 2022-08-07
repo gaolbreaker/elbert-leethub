@@ -30,7 +30,7 @@ var climbStairs = function(n) {
       } else if (stepsRemaining === 1) {
         returnVal = recurse(stepsRemaining - 1);
       } else {
-        returnVal = recurse(stepsRemaining - 1) + recurse(stepsRemaining - 2);
+        returnVal = recurse(stepsRemaining - 2) + recurse(stepsRemaining - 1);
       }
       return returnVal;
       cache[stepsRemaining] = returnVal;
