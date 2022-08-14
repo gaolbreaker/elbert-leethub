@@ -31,10 +31,10 @@ var reverseString = function(s) {
   let right = s.length - 1; //left and right are the INDEXES, don't confuse =yourself
   
   while (left < right) {
-    // let tempLeft = s[left];
-    // s[left] = s[right];
-    // s[right] = tempLeft;
-    [s[left], s[right]] = [s[right], s[left]]; // ES6 destructuring
+    let tempLeft = s[left];
+    s[left] = s[right];
+    s[right] = tempLeft;
+    // [s[left], s[right]] = [s[right], s[left]]; // ES6 destructuring
     left += 1;
     right -= 1;
   }
