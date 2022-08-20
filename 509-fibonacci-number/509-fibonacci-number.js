@@ -38,12 +38,33 @@ var fib = function(n) {
     //   throw 'Error!';
     // }
   
-    if (n === 0) {
-      return 0;
-    } else if (n === 1) {
-      return 1;
-    } else {
-      return fib(n - 1) + fib(n -2);
-    }
+//     if (n === 0) {
+//       return 0;
+//     } else if (n === 1) {
+//       return 1;
+//     } else {
+//       return fib(n - 1) + fib(n -2);
+//     }
+  
+  /*
+  
+    if n = 0 return 0
+    if n = 1 return 1
+    otherwise, loop from 2 to n
+      for 
+  */
+  
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  
+  let arr = [0, 1];
+  
+  for (let i = 2; i <= n; i++) {
+    arr.push(arr[i - 2] + arr[i -1]);
+  }
+  
+  return arr[n];
+  
+  // to-do, convert to more optimal solution, space complexity O(1)
     
 };
