@@ -20,6 +20,7 @@ var tribonacci = function(n) {
     let t_1 = 1;
     let t_2 = 1;
     let t_n = 2;
+    const table = [0, 1, 1]
   
   // handle edge cases
     if (n === 0) return 0;
@@ -28,15 +29,18 @@ var tribonacci = function(n) {
     
   
   // loop
-    for (let i = 3; i <= n; i++) {
+//     for (let i = 3; i <= n; i++) {
       
-      t_n = t_0 + t_1 + t_2;
-      t_0 = t_1;
-      t_1 = t_2;
-      t_2 = t_n;
+//       t_n = t_0 + t_1 + t_2;
+//       t_0 = t_1;
+//       t_1 = t_2;
+//       t_2 = t_n;
+//     }
+    for (let i = 3; i <= n; i++) {
+      table[i] = (table[i - 3] + table[i - 2] + table[i - 1]);
     }
   
-  return t_n;
+  return table[n];
   
     
 };
