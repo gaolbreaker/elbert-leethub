@@ -4,13 +4,12 @@
  */
 var moveZeroes = function(nums) {
   let curr = 0;
-  while (curr < nums.length) {
+  let zeroes = 0;
+  while (curr < nums.length - zeroes) {
     if (nums[curr] === 0) {
-      nums.push(nums.splice(curr,1));
-    } else {
-      curr++;
+      nums.push(nums.splice(curr, 1));
+      zeroes++;
     }
+    else curr++;
   }
-
-    
 };
