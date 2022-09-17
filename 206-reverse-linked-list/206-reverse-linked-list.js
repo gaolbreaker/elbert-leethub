@@ -9,38 +9,37 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
-  // create an array of nodes
-  const arr = [];
-  function fillArray(head) {
-      if (head) {
-        arr.push(head);      
-        if (head.next) {
-          fillArray(head.next);
-        }
-      }
-  }
-  fillArray(head);
+var reverseList = function(head, prev = null) {
+  /*
+  // IOCE
+  // I: head of linked list
+  // O: head of linked list, reversed
+  // C: number of nodes is [0, 5000], node vales are [-5000, 5000]
+  // E: null? 
+  // Example 1:
   
-  // reversal
-  // initial value of current
-  let current = null;
-  let newHead = null;
-  // [1, 2, 3, 4, 5]
-  // while array is non-zero in length, loop
-  while (arr.length > 0) {
-    // if current is null, set current to the popped element
-    if (current === null) {
-        current = arr.pop();
-        newHead = current;
-    } else {
-        current.next = arr.pop();
-        current = current.next;
-        if (arr.length === 0) {
-          current.next = null;
-        }
-    }
+  given  1 -> 2 -> 3 -> 4 -> 5 -> null
+                              n    p   on
+  null<- 1 <- 2 <- 3 <- 4 -> 
+  return 5 -> 4 -> 3 -> 2 -> 1
+  
+  One approach might be to create an array and construct a new linked list and return it. seems inefficient
+  Another approach is to traverse the linked list and mutate each node. The last node becomes the head of the LL to be returned
+  
+  
+  */
+  
+  // attempt at a recursive solution
+  // base case
+  if (head === null) {
+    return prev;
+  } else {
+  // recursive case
+    // change something
+    head.oldNext = head.next;
+    head.next = prev;
+    // return & recurse
+    return reverseList(head.oldNext, head)
   }
   
-  return newHead;
 };
