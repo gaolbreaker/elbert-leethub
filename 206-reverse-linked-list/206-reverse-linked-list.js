@@ -31,6 +31,7 @@ var reverseList = function(head, prev = null) {
   
   // attempt at a recursive solution
   // base case
+  /*
   if (head === null) {
     return prev;
   } else {
@@ -41,5 +42,20 @@ var reverseList = function(head, prev = null) {
     // return & recurse
     return reverseList(head.oldNext, head)
   }
+  */
+  
+  // attempt at a iterative solution
+  let curr = head;
+  let oldNext;
+  while (curr !== null) {
+    // save the oldNext
+    oldNext = curr.next;
+    // mutate the current node
+    curr.next = prev;
+    prev = curr;
+    // traverse the LL by changing the curr pointer
+    curr = oldNext;
+  }
+  return prev;
   
 };
