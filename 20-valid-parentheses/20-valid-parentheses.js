@@ -29,7 +29,7 @@ var isValid = function(s) {
             if yes, pop off the stack
       
     */
-    if (s.length === 1) return false;
+    // if (s.length === 1) return false;
     let stack = [];
     for (let i = 0; i < s.length; i++) {
        if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
