@@ -30,10 +30,10 @@ var isBalanced = function(root) {
     if (Math.abs(left - right) > 1) flag = false;
     
     // has children
-    // if (node.left || node.right) {
-    //   return 1 + Math.max(left, right);
-    // } else return 1;
-    return 1 + Math.max(left, right);
+    if (node.left !== null || node.right !== null) {
+      return 1 + Math.max(left, right);
+    } else return 1;
+    // return 1 + Math.max(left, right);
   }
   
   helper(root);
