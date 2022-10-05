@@ -3,20 +3,20 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
-  const words = [];
+  let lastWord;
   let currWord = '';
   
   for (let i = 0; i < s.length; i++) {
     if (s[i] !== ' ') {
       currWord += s[i];
-      if (i === s.length - 1) words.push(currWord);
+      if (i === s.length - 1) lastWord = currWord;
     } else {
       if (currWord.length > 0) {
-        words.push(currWord);
+        lastWord = currWord;
       }
       currWord = '';
     }
   }
-  return words.pop().length;
+  return lastWord.length;
   
 };
