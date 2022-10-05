@@ -25,8 +25,8 @@ var longestCommonPrefix = function(strs) {
   
   let result = '';
   
-  // const minStrLength = Math.min(...strs.map((e) => e.length));
-  for (let i = 0; i <= 999; i++) {
+  const minStrLength = Math.min(...strs.map((e) => e.length));
+  for (let i = 0; i <= minStrLength; i++) {
     let commonality = strs.map((e) => e[i]).reduce((a, b) => a === b ? b : false);
     if (commonality) result += commonality;
     else break;
