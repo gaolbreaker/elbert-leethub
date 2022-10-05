@@ -19,9 +19,9 @@ var longestCommonPrefix = function(strs) {
   */
   
   // edge case
-  if (strs.length === 1) {
-    return strs[0];
-  }
+  // if (strs.length === 1) {
+  //   return strs[0];
+  // }
   
   let result = '';
   
