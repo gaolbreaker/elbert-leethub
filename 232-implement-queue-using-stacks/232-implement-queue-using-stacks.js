@@ -1,6 +1,6 @@
 
 var MyQueue = function() {
-    this.stack = [];
+    this.list = new LinkedList();
 };
 
 /** 
@@ -8,28 +8,28 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
-    this.stack.push(x);
+    this.list.push(x);
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-    return this.stack.shift();
+    return this.list.dequeue();
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-    return this.stack[0];
+    return this.list.peek();
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-    return this.stack.length === 0;
+    return this.list.length === 0;
 };
 
 /** 
@@ -40,3 +40,41 @@ MyQueue.prototype.empty = function() {
  * var param_3 = obj.peek()
  * var param_4 = obj.empty()
  */
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  push(val) {
+    let newNode = new Node(val);
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+  }
+  peek() {
+    return this.head ? this.head.val : null;
+  }
+  dequeue() {
+    let temp = this.peek();
+    
+    if (this.head) this.head = this.head.next;
+    else this.head = null;
+    
+    this.length--;
+    return temp;
+  }
+}
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
