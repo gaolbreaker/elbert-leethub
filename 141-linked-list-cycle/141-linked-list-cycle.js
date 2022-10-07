@@ -11,6 +11,7 @@
  * @return {boolean}
  */
 var hasCycle = function(head, arr = []) {
+  // unoptimized recursive version, poor space complexity
   if (head === null) return false;
   else if (arr.includes(head.next)) {
     return true;
@@ -18,4 +19,12 @@ var hasCycle = function(head, arr = []) {
     arr.push(head.next);
     return hasCycle(head.next, arr);
   }
+  
+  // unoptimized iterative version
+  let curr = head;
+  while(curr.next) {
+    arr.push(curr);
+    if (arr.includes(curr)) return true;
+  }
+  return false;
 };
