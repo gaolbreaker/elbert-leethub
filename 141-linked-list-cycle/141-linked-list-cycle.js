@@ -23,12 +23,23 @@ var hasCycle = function(head, arr = []) {
   // unoptimized iterative version
   let curr = head;
   while(curr) {
-    arr.push(curr);
-    if (arr.includes(curr.next)) return true;
+    curr.val = 'v';
+    if (curr.next?.val === 'v') return true;
     curr = curr.next;
   }
   return false;
   
-  //optimized version not using lots of extra storage:
+//   //optimized version not using lots of extra storage:
+//   function helper(node) {
+//     if (node === null) {
+//       return false;
+//     } else if (node.val === undefined) {
+//       return true;
+//     } else {
+//       return helper(node.next);
+//     }
+//   }
+  
+//   return helper(head);
   
 };
