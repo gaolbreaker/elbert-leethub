@@ -39,7 +39,7 @@ var solution = function(isBadVersion) {
         if (midResult) { // found a bad ver
           right = mid - 1;
         } else { // DIDN'T find a bad ver, so it's to the right
-          if (left === right) {
+          if (left === right) { // special case where we're right next to the first bad ver
             return mid + 1;
           } else left = mid + 1;
         }
