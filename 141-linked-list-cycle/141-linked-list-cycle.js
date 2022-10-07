@@ -11,20 +11,24 @@
  * @return {boolean}
  */
 var hasCycle = function(head, arr = []) {
-  // unoptimized recursive version, poor space complexity
-  if (head === null) return false;
-  else if (arr.includes(head.next)) {
-    return true;
-  } else {
-    arr.push(head.next);
-    return hasCycle(head.next, arr);
-  }
+  // // unoptimized recursive version, poor space complexity
+  // if (head === null) return false;
+  // else if (arr.includes(head.next)) {
+  //   return true;
+  // } else {
+  //   arr.push(head.next);
+  //   return hasCycle(head.next, arr);
+  // }
   
   // unoptimized iterative version
   let curr = head;
-  while(curr.next) {
+  while(curr) {
     arr.push(curr);
-    if (arr.includes(curr)) return true;
+    if (arr.includes(curr.next)) return true;
+    curr = curr.next;
   }
   return false;
+  
+  //optimized version not using lots of extra storage:
+  
 };
