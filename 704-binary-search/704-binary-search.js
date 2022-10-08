@@ -4,24 +4,24 @@
  * @return {number}
  */
 var search = function(nums, target) {
-  let low = 0;
-  let mid = 0;
-  let high = nums.length - 1;
   
-  while (low <= high) {
-    // set mid
-    mid = low + Math.ceil((high - low) / 2);
-    
-    // compare
+  /*
+     0  1.2 3 4 5
+    [-1,0,3,5,9,12] target = 9
+     l.   m      r
+            l.m  r
+  */
+
+  let left = 0;
+  let right = nums.length - 1;
+  
+  while(left <= right) {
+    mid = left + Math.floor((right - left) / 2);
     if (nums[mid] === target) {
       return mid;
-    } else if (nums[mid] < target) {
-      // target is to the right of the current mid, so change left
-      low = mid + 1;
-    } else if (nums[mid] > target) {
-      // target is the left of current mid, so change right
-      high = mid - 1;
     }
+    if (target < nums[mid]) right = mid - 1;
+    if (target > nums[mid]) left = mid + 1;
   }
   
   return -1;
