@@ -10,6 +10,11 @@
  * @return {boolean}
  */
 var isPalindrome = function(head) {
+  
+  /*
+    4 0 1 2 3
+    5 0 1 3 4
+  */
   if (head.next === null) return true;
   else {
     const arr = [];
@@ -18,8 +23,7 @@ var isPalindrome = function(head) {
       arr.push(curr.val);
       curr = curr.next;
     }
-    console.log(arr);
-    if (JSON.stringify(arr) === JSON.stringify(arr.reverse())) {
+    if (JSON.stringify(arr.slice(0, Math.floor(arr.length / 2))) === JSON.stringify(arr.slice(Math.round(arr.length / 2)).reverse())) {
       return true;
     } else return false;
   }
