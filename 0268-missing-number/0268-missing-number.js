@@ -31,12 +31,7 @@ var missingNumber = function(nums) {
         undefinedIndex = i;
         i++;
       }
-    // } else if (nums[i] === undefined) { // thing is undefined
-    //   undefinedIndex = i;
-    //   i++;
-    } else {
-      i++;
-    }
+    } else i++;
   }
   
   return undefinedIndex;
