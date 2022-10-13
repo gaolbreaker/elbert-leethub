@@ -11,40 +11,22 @@
  */
 var isPalindrome = function(head) {
   
-  /*
-    4 0 1 2 3
-    5 0 1 2 3 4
-  */
+  // version without arrays. mutates singly linked list to doubly linked list
 
-    const arr = [];
-    let curr = head;
-    let prev = null;
-    while (curr) {
-      // arr.push(curr.val);
-      curr.prev = prev;
-      prev = curr;
-      curr = curr.next;
-    }
-    const tail = prev;
-    let left = head;
-    let right = tail;
-    while (left !== right) {
-      if (left.val !== right.val) return false;
-      left = left.next;
-      right = right.prev;
-    }
-    return true;
+  let curr = head;
+  let prev = null;
+  while (curr) {
+    curr.prev = prev;
+    prev = curr;
+    curr = curr.next;
+  }
 
-    // let i = 0;
-    // let j = arr.length - 1;
-    // while (i <= j) {
-    //   if (arr[i] !== arr[j]) return false;
-    //   else {
-    //     i++;
-    //     j--;
-    //   }
-    // } 
-    // return true;
-  
-  
+  curr = head;
+
+  while (curr !== prev) {
+    if (curr.val !== prev.val) return false;
+    curr = curr.next;
+    prev = prev.prev;
+  }
+  return true;
 };
