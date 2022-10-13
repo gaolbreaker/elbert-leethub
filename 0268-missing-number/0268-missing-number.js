@@ -22,17 +22,18 @@ var missingNumber = function(nums) {
   
   while (i <= length) {
     if (nums[i] !== i) { // element at index i is NOT i
+      
       temp = nums[i]; // temporarily store the element at index i
       nums[i] = nums[temp]; // swap , put in undefined
       nums[temp] = temp; // swap, put in 3
+      
       if (nums[i] === undefined) {
         undefinedIndex = i;
         i++;
       }
-      
-    } else if (nums[i] === undefined) { // thing is undefined
-      undefinedIndex = i;
-      i++;
+    // } else if (nums[i] === undefined) { // thing is undefined
+    //   undefinedIndex = i;
+    //   i++;
     } else {
       i++;
     }
