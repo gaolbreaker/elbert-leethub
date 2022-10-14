@@ -3,7 +3,7 @@
  * @return {number[][]}
  */
 var generate = function(numRows) {
-  const result = new Array(numRows);
+  const result = [];
   for (let i = 1; i <= numRows; i++) { // i is the row number
     result[i - 1] = [];
     for (let j = 1; j <= i; j++) { // j is the column number, 1-indexed
