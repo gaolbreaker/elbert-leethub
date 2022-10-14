@@ -16,6 +16,8 @@ var minDepth = function(root) {
       0 : 
       root.left && root.right ? 
         1 + Math.min(minDepth(root.left), minDepth(root.right)) :
-        1 + (root.left ? minDepth(root.left) : minDepth(root.right))
+        !!!root.left && !!!root.right ?
+          1 :
+          1 + (root.left ? minDepth(root.left) : minDepth(root.right))
   );  
 };
