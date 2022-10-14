@@ -13,9 +13,9 @@
 var minDepth = function(root) {
   return (
     root === null ? 
-    0 : 
-    root.left && root.right ? 
-    1 + Math.min(minDepth(root.left), minDepth(root.right)) :
-    1 + Math.max(minDepth(root.left), minDepth(root.right))
+      0 : 
+      root.left && root.right ? 
+        1 + Math.min(minDepth(root.left), minDepth(root.right)) :
+        1 + (root.left ? minDepth(root.left) : minDepth(root.right))
   );  
 };
