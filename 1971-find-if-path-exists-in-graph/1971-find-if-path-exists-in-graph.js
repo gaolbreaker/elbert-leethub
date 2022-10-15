@@ -41,7 +41,7 @@ var validPath = function(n, edges, source, destination) {
   // preprocessing done, move on to main algorithm
   const visited = [];
   const queue = [source];
-  console.log('source' + source);
+  // console.log('source' + source);
   let curr; 
   let count = 0;
   
@@ -66,10 +66,10 @@ var validPath = function(n, edges, source, destination) {
       }
     });
     
-    console.log('queue')
-    console.log(queue);
-    console.log('visited: ')
-    console.log(visited)
+    // console.log('queue')
+    // console.log(queue);
+    // console.log('visited: ')
+    // console.log(visited)
     // count++;
     // if (count > 10) break;
   }
