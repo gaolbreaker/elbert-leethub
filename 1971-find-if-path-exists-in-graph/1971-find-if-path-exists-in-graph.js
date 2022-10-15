@@ -99,6 +99,19 @@ var validPath = function(n, edges, source, destination) {
     }
     // [[1, 2],[0, 2],[1, 0]]
     // console.log(adjList);
+    
+    // in 2d arrays, make sure you have the [i] there... make sure you're referring to the right level of the array/subarray you know what i mean
   }
+  
+  /*
+   [0, 1, 2].shift() results in [1, 2]
+   [1, 2].unshift(0) results in [0, 1, 2]
+   DON'T FUCK UP SHIFT and UNSHIFT
+   SHIFT <---- [...] removes something from the left
+   UNSHIFT ---> [...] adds something to the left
+   POP [...] ----> removes something from the right
+   PUSH [.....] <---- adds somethign to the right
+  
+  */
     
 };
