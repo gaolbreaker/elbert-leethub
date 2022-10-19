@@ -12,23 +12,25 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
-  
+  // second go
+  // TC: O(2m + n)
+  // SC: O(m)
   let curr = headA;
   let curr2 = headA;
   
   // set a flag on each node in linked list 1
   while (curr) {
-    curr.visited = true;
+    curr.v = true;
     curr = curr.next;
   }
   // reset curr
   curr = headB;
   
   while (curr) {
-    if (curr.visited) {
+    if (curr.v) {
       // revert the first linkedList to original state
       while (curr2) {
-        delete curr2.visited;
+        delete curr2.v;
         curr2 = curr2.next;
       }
       // return the node that was "visited" before! that's the intersection point!
@@ -38,6 +40,7 @@ var getIntersectionNode = function(headA, headB) {
     }
   }
   
+  // first go
   // O(m + n) space complexity
   // O(m + n) time complexity
   
