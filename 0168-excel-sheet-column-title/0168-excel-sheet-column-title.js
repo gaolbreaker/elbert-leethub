@@ -7,12 +7,12 @@ var convertToTitle = function(columnNumber) {
   const res = [];
 
   while (columnNumber > 0) {
-    res.unshift(arr[columnNumber % 26]);
+    res.push(arr[columnNumber % 26]);
     if (columnNumber % 26 === 0) columnNumber -= 26;
     else columnNumber -= columnNumber % 26;
     columnNumber /= 26;
   }
   
-  return res.join('');
+  return res.reverse().join('');
   
 };
