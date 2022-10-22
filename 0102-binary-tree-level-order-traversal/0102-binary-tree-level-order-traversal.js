@@ -42,9 +42,10 @@ var levelOrder = function(root) {
                     9             20
                               15        7
                               
-                   results = [3]
-                   queue = [9, 20]
+                   results = [[]]
+                   queue = []
                    curr = 3;
+                   level = 0;
   
   */
   
@@ -54,14 +55,15 @@ var levelOrder = function(root) {
     const [curr, level] = queue.shift(); // [node, 0]
     if (curr !== null) {
       // console.log(`curr: ${JSON.stringify(curr)}`);
-      if (results.level === undefined) results.push([]);
-
+      if (!results[level]) results.push([]); // Learnings: make sure you know, when dealing with arrays within arrays within arrays, which "level" you are at
+      // remember that with arrays you should NOT use dot notation to access indices, it simply doesn't work the way you think it does, but shit will still run
       results[level].push(curr.val);
 
-      queue.push([curr.left, level + 1]);
-      queue.push([curr.right, level + 1]);
+      if (curr.left) queue.push([curr.left, level + 1]);
+      if (curr.right) queue.push([curr.right, level + 1]);
     }    
   }
   // console.log(results);
-  return results.filter((e) => e.length > 0);
+  // return results.filter((e) => e.length > 0);
+  return results;
 };
