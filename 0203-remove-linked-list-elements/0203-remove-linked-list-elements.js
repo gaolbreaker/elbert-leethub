@@ -27,6 +27,7 @@ var removeElements = function(head, val) {
   if (!head) return head;
   let curr = head;
   let prev = null;
+  
   while (curr) {
     if (curr.val === val && prev) {
       prev.next = curr.next; 
@@ -35,6 +36,7 @@ var removeElements = function(head, val) {
       head = curr.next;
       curr = null;
     }
+    
     prev = curr;
     
     if (curr) curr = curr.next;
