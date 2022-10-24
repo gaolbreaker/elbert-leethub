@@ -31,7 +31,7 @@ var removeElements = function(head, val) {
     if (curr.val === val && prev) {
       prev.next = curr.next; 
       curr = prev;
-    } else if (curr.val === val && head === curr) {
+    } else if (curr.val === val) {
       head = curr.next;
       curr = null;
     }
