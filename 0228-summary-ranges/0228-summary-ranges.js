@@ -23,7 +23,7 @@ var summaryRanges = function(nums) {
   let left = 0; // represents an index
   let right = 0; // represents an index
   
-  while (curr < nums.length) {
+  while (curr <= nums.length) {
     if (nums[curr] === nums[curr - 1] + 1) { // case 0: the contiguity continues
       right = curr;
     } else { // case 1: we have broken the contiguity
@@ -37,11 +37,11 @@ var summaryRanges = function(nums) {
     curr++;
   }
   
-  // the last segment has to be dealt with:
-  // case 1.a.: left and right are the same
-  if (left === right) result.push(nums[left].toString());
-  // case 1.b.: left and right are different
-  else result.push(nums[left].toString() + '->' + nums[right]);
+  // // the last segment has to be dealt with:
+  // // case 1.a.: left and right are the same
+  // if (left === right) result.push(nums[left].toString());
+  // // case 1.b.: left and right are different
+  // else result.push(nums[left].toString() + '->' + nums[right]);
   
   return result;
 };
