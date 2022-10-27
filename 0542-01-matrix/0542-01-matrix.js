@@ -35,7 +35,7 @@ var updateMatrix = function(mat) {
   
   // handle second_to_n pass
   while (countUndefined > 0) {
-    console.log('countUndefined: ' + countUndefined);
+    // console.log('countUndefined: ' + countUndefined);
     for (let i = 0; i < mat.length; i++) {
       for (let j = 0; j < mat[i].length; j++) {
         if (mat[i][j] === undefined) {
