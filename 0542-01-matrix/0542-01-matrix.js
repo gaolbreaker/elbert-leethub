@@ -22,32 +22,61 @@ var updateMatrix = function(mat) {
   // count undefined
   let countUndefined = 0;
   let dist = 1;
+  let queueOfQueues = [[]]; // queueOfQueues[0] is the front, it is a queue of position 2-tuples
   
   // initial pass
   for (let i = 0; i < mat.length; i++) {
     for (let j = 0; j < mat[i].length; j++) {
       if (mat[i][j] !== 0) {
         mat[i][j] = undefined;
-        countUndefined++;
+        // countUndefined++;
+        queueOfQueues[0].push([i,j]); // what are we storing?
       }
     }
   }
   
-  // handle second_to_n pass
-  while (countUndefined > 0) {
-    // console.log('countUndefined: ' + countUndefined);
-    for (let i = 0; i < mat.length; i++) {
-      for (let j = 0; j < mat[i].length; j++) {
-        if (mat[i][j] === undefined) {
-          if (mat[i-1]?.[j] === dist - 1 || mat[i]?.[j+1] === dist - 1 || mat[i+1]?.[j] === dist - 1 || mat[i]?.[j-1] === dist - 1) {
-            mat[i][j] = dist;
-            countUndefined--;
-          }
-        }
+  // console.log(queueOfQueues);
+  let i;
+  let j;
+  // [ [ [6, 3], [3, 4], [3, 7], ] ]
+  
+  while (queueOfQueues.length > 0) {
+    let newQueue = [];
+    
+    while(queueOfQueues[0].length > 0) {
+      i = queueOfQueues[0][0][0];
+      j = queueOfQueues[0][0][1];
+      // to implement, go through cells to be processed
+      if (mat[i - 1]?.[j] === dist - 1 || mat[i]?.[j+1] === dist - 1 || mat[i+1]?.[j] === dist - 1 || mat[i]?.[j-1] === dist - 1) {
+        mat[i][j] = dist;
+      } else {
+        newQueue.push([i, j]);
       }
+      queueOfQueues[0].shift();
     }
+    
+    if (newQueue.length > 0) queueOfQueues.push(newQueue);
     dist++;
+    queueOfQueues.shift();
+    // console.log(queueOfQueues);
   }
+  
+  
+  // // handle second_to_n pass
+  // while (countUndefined > 0) {
+  //   // console.log('countUndefined: ' + countUndefined);
+  //   for (let i = 0; i < mat.length; i++) {
+  //     for (let j = 0; j < mat[i].length; j++) {
+  //       if (mat[i][j] === undefined) {
+  //         if (mat[i-1]?.[j] === dist - 1 || mat[i]?.[j+1] === dist - 1 || mat[i+1]?.[j] === dist - 1 || mat[i]?.[j-1] === dist - 1) {
+  //           mat[i][j] = dist;
+  //           countUndefined--;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   dist++;
+  // }
   
 //   // second pass, hard coded
 //   for (let i = 0; i < mat.length; i++) {
