@@ -20,9 +20,10 @@ var updateMatrix = function(mat) {
   */
   
   // count undefined
-  let countUndefined = 0;
+  // let countUndefined = 0;
   let dist = 1;
-  let queueOfQueues = [[]]; // queueOfQueues[0] is the front, it is a queue of position 2-tuples
+  let q = []; // queueOfQueues[0] is the front, it is a queue of position 2-tuples
+  let newQueue;
   
   // initial pass
   for (let i = 0; i < mat.length; i++) {
@@ -30,7 +31,7 @@ var updateMatrix = function(mat) {
       if (mat[i][j] !== 0) {
         mat[i][j] = undefined;
         // countUndefined++;
-        queueOfQueues[0].push([i,j]); // what are we storing?
+        q.push([i,j]); // what are we storing? 2-tuples representing cells we don't yet know the distances to nearest zero of
       }
     }
   }
@@ -40,24 +41,24 @@ var updateMatrix = function(mat) {
   let j;
   // [ [ [6, 3], [3, 4], [3, 7], ] ]
   
-  while (queueOfQueues.length > 0) {
-    let newQueue = [];
+  while (q.length > 0) {
+    newQueue = [];
     
-    while(queueOfQueues[0].length > 0) {
-      i = queueOfQueues[0][0][0];
-      j = queueOfQueues[0][0][1];
+    while(q.length > 0) {
+      [i, j] = q.pop();
+      // i = q[0][0];
+      // j = q[0][1];
       // to implement, go through cells to be processed
       if (mat[i - 1]?.[j] === dist - 1 || mat[i]?.[j+1] === dist - 1 || mat[i+1]?.[j] === dist - 1 || mat[i]?.[j-1] === dist - 1) {
         mat[i][j] = dist;
       } else {
         newQueue.push([i, j]);
       }
-      queueOfQueues[0].shift();
+      // q.shift();
     }
     
-    if (newQueue.length > 0) queueOfQueues.push(newQueue);
+    if (newQueue.length > 0) q = newQueue;
     dist++;
-    queueOfQueues.shift();
     // console.log(queueOfQueues);
   }
   
