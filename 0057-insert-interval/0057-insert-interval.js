@@ -23,7 +23,7 @@ var insert = function(intervals, newInterval) {
     [oldStart, oldEnd] = intervals.shift(); // dequeue intervals and destructure
     [newStart, newEnd] = newInterval; // destructure
     
-    // Five cases, mutually exclusive
+    // Six cases, mutually exclusive
     // Case 1: new < existing
     if (newStart < oldStart && newEnd < oldStart) {
       // intervals.unshift([[newStart, newEnd],[oldStart, oldEnd]]);
@@ -59,9 +59,6 @@ var insert = function(intervals, newInterval) {
     if (newStart < oldStart && oldEnd < newEnd) {
       newInterval = [newStart, newEnd]
     }
-    
-    console.log(intervals);
-    console.log(newInterval);
     
     // use Math.min and Math.max
   }
