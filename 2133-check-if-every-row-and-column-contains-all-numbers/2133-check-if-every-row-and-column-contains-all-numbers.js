@@ -55,6 +55,7 @@ var checkValid = function(matrix) {
 
       
       for (let j = 1; j <= matrix.length; j++) { // J is the integer, 1-indexed, and needs to be converted to 0-indexed
+        
         let containsJ = false;
         for (let k = 0; k < matrix.length; k++) { // k is row
           
