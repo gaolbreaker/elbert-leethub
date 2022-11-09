@@ -3,7 +3,7 @@
  * @param {number} num2
  * @return {number}
  */
-var sum = function(num1, num2) {
+var sum = function(a, b) {
   
   /*
   
@@ -27,14 +27,14 @@ var sum = function(num1, num2) {
       ^                    11000 = 24
     
   */
-  var xor = num1 ^ num2;
+  var x = a ^ b;
   // console.log(`xor: ${xor}`);
-  var carry = (num1 & num2) << 1;
+  var c = (a & b) << 1;
   // console.log(`carry: ${carry}`)
-  if (xor & carry) {
-    return sum(xor, carry);
+  if (x & c) {
+    return sum(x, c);
   } else {
-    return xor ^ carry;
+    return x ^ c;
   }
   
 };
