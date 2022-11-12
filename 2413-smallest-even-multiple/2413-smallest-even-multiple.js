@@ -3,9 +3,9 @@
  * @return {number}
  */
 var smallestEvenMultiple = function(n) {
-  let multiple = 1;  
-  while ((n * multiple) % 2 !== 0) {
-    multiple++;
+  let k = 1;  
+  while ((n * k) % 2 !== 0) {
+    k++;
   }
-  return multiple * n;
+  return k * n;
 };
