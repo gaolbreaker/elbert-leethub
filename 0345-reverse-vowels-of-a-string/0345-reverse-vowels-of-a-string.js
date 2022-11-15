@@ -22,18 +22,21 @@ var reverseVowels = function(s) {
     E
   */
   
-  const isVowel = {a: true, e: true, i: true, o: true, u: true};
-  const vowels = [];
-  let res = ''
+  const isVowel = new Set('aeiouAEIOU'); // Set() constructor takes an iterable
+  const vowels = []; // if all vowels, then extra O(n) memory here
+  let res = '' // extra O(n) memory? Ignored because it's the output
   
-  for (let i = 0; i < s.length; i++) {
-    if (isVowel[s[i].toLowerCase()]) vowels.push(s[i]);
+  // console.log('Before first for loop:' + vowels);
+  for (let char of s) {
+    if (isVowel.has(char)) vowels.push(char);
   }
+  // console.log('After first for loop:' + vowels);
   
-  for (let i = 0; i < s.length; i++) {
-    if (isVowel[s[i].toLowerCase()]) res += vowels.pop();
-    else res += s[i];
+  for (let char of s) {
+    if (isVowel.has(char)) res += vowels.pop();
+    else res += char;
   }
+  // console.log('After second for loop:' + vowels);
   
   return res;
   
