@@ -8,9 +8,9 @@ var lengthOfLongestSubstring = function(s) {
   let max = 0;
   for (let end = 0; end < s.length; end++) {        // iterate across substring end values from 0 to s.length - 1
     for (let slide = start; slide < end; slide++) { // iterate across window lengths (end - slide) 
-      if (s[slide] === s[end]) { // evaluate whether we've found a repeat of s[end]
-        start = slide + 1; // restrict the sliding window in the next iteration
-        break;
+      if (s[slide] === s[end]) { // evaluate whether we've found a repeat of s[end] in the current subString
+        start = slide + 1; // if so, restrict the sliding window in the next iteration
+        break; // 
       }
     }
     if (end - start + 1 > max) max = end - start + 1; // adjust max if needed
