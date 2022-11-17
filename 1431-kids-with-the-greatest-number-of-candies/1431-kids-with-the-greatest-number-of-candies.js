@@ -20,6 +20,10 @@ var kidsWithCandies = function(candies, extraCandies) {
     E
   */
   const max = Math.max(...candies);
-  return candies.map(e => e + extraCandies >= max);
-    
+  const res = [];
+  for (let e of candies) {
+    if (e + extraCandies >= max) res.push(true);
+    else res.push(false);
+  }    
+  return res;
 };
