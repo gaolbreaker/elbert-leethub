@@ -10,17 +10,17 @@ var evalRPN = function(tokens) {
     "*": (a, b) => a * b
   };
   
-  function helper() {
+  function recurse() {
     const token = tokens.pop();
     const number = Number(token);
     if (number || number === 0) return number;// base case: evaluate whether the token is a number and return it immediately if so
     const operator = tokenToOperator[token];
-    const right = evalRPN(tokens); // recurse right side
-    const left = evalRPN(tokens); // recurse left side
+    const right = recurse(); // recurse right side
+    const left = recurse(); // recurse left side
     return operator(left, right); 
   }
   
-  return helper();
+  return recurse();
 };
 
 // Reminder: 0 is falsy!
