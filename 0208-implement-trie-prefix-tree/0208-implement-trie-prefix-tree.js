@@ -63,17 +63,16 @@ class Trie {
   }
   
   startsWith(prefix) {
-    const word = prefix;
     if (this.wordCount === 0) return false;
     else {
       let i = 0;
-      if (this.tree[word[i]] === undefined) return false;
-      let currNode = this.tree[word[i]];
-      while (i < word.length) {
-        if (word[i + 1]) {
-          if (currNode[word[i + 1]] === undefined) return false;
+      if (this.tree[prefix[i]] === undefined) return false;
+      let currNode = this.tree[prefix[i]];
+      while (i < prefix.length) {
+        if (prefix[i + 1]) {
+          if (currNode[prefix[i + 1]] === undefined) return false;
         } 
-        currNode = currNode[word[i + 1]];
+        currNode = currNode[prefix[i + 1]];
         i++;
       }
     }
