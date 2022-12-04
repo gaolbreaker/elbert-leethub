@@ -5,11 +5,12 @@ class Trie {
     this.tree = new Node();
   }
   
+  // Method 1
   insert(word){
     let i = 0;
     let currNode;
-    // Case of the first insertion:
-    if (this.wordCount === 0) {
+    // 1.a - Case of the first insertion:
+    if (!this.wordCount) {
       this.tree[word[i]] = new Node(word[i]);
       currNode = this.tree[word[i]];
       while (i < word.length) {
@@ -22,7 +23,7 @@ class Trie {
         i++;
       }
     }
-    // Case of subsequent insertions:
+    // 1.b - Case of subsequent insertions:
     else if (this.wordCount > 0) {
       if (this.tree[word[i]] == undefined) {
         this.tree[word[i]] = new Node(word[i]);
@@ -43,6 +44,7 @@ class Trie {
     this.wordCount++;
   }
   
+  // Method 2
   search(word) {
     if (this.wordCount === 0) return false;
     else {
@@ -62,6 +64,7 @@ class Trie {
     return false;
   }
   
+  // Method 3
   startsWith(prefix) {
     if (this.wordCount === 0) return false;
     else {
