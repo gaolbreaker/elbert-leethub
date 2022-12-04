@@ -21,7 +21,7 @@ class Trie {
   }
   
   // Method 2
-  search(word) {
+  search(word, fullMatch = true) {
     let i = 0;
     let currNode = this.tree[word[i]];
     if (!this.wordCount || !this.tree[word[i]]) return false;
@@ -31,13 +31,13 @@ class Trie {
         currNode = currNode[word[i + 1]];
         i++;
       }
-      if (currNode.end) return true;
-      else return false;
+      return fullMatch ? currNode.end : true;
     }
   }
   
   // Method 3
   startsWith(prefix) {
+    // this.search(prefix, false);
     let i = 0;
     let currNode = this.tree[prefix[i]];
     if (!this.wordCount || !this.tree[prefix[i]]) return false;
