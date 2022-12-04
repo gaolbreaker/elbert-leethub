@@ -22,22 +22,18 @@ class Trie {
   
   // Method 2
   search(word) {
-    if (!this.wordCount) return false;
+    let i = 0;
+    let currNode = this.tree[word[i]];
+    if (!this.wordCount || !this.tree[word[i]]) return false;
     else {
-      let i = 0;
-      if (!this.tree[word[i]]) return false;
-      let currNode = this.tree[word[i]];
-      while (i < word.length) {
-        if (word[i + 1]) {
-          if (!currNode[word[i + 1]]) return false;
-        } else {
-          if (currNode.end) return true;
-        }
+      while (i < word.length - 1) {
+        if (!currNode[word[i + 1]]) return false;
         currNode = currNode[word[i + 1]];
         i++;
       }
+      if (currNode.end) return true;
+      else return false;
     }
-    return false;
   }
   
   // Method 3
