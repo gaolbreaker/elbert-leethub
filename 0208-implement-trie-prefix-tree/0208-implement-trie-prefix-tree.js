@@ -24,14 +24,14 @@ class Trie {
       }
     }
     // 1.b - Case of subsequent insertions:
-    else if (this.wordCount > 0) {
-      if (this.tree[word[i]] == undefined) {
+    else {
+      if (!this.tree[word[i]]) {
         this.tree[word[i]] = new Node(word[i]);
       }
       currNode = this.tree[word[i]];
       while (i < word.length) {
         if (word[i + 1]) {
-          if (currNode[word[i + 1]] === undefined) {
+          if (!currNode[word[i + 1]]) {
             currNode[word[i + 1]] = new Node(word[i + 1]);
           }
         } else {
@@ -46,16 +46,16 @@ class Trie {
   
   // Method 2
   search(word) {
-    if (this.wordCount === 0) return false;
+    if (!this.wordCount) return false;
     else {
       let i = 0;
-      if (this.tree[word[i]] === undefined) return false;
+      if (!this.tree[word[i]]) return false;
       let currNode = this.tree[word[i]];
       while (i < word.length) {
         if (word[i + 1]) {
-          if (currNode[word[i + 1]] === undefined) return false;
+          if (!currNode[word[i + 1]]) return false;
         } else {
-          if (currNode.end === true) return true;
+          if (currNode.end) return true;
         }
         currNode = currNode[word[i + 1]];
         i++;
@@ -66,14 +66,14 @@ class Trie {
   
   // Method 3
   startsWith(prefix) {
-    if (this.wordCount === 0) return false;
+    if (!this.wordCount) return false;
     else {
       let i = 0;
-      if (this.tree[prefix[i]] === undefined) return false;
+      if (!this.tree[prefix[i]]) return false;
       let currNode = this.tree[prefix[i]];
       while (i < prefix.length) {
         if (prefix[i + 1]) {
-          if (currNode[prefix[i + 1]] === undefined) return false;
+          if (!currNode[prefix[i + 1]]) return false;
         } 
         currNode = currNode[prefix[i + 1]];
         i++;
