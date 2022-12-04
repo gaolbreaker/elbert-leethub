@@ -8,9 +8,9 @@ class Trie {
   // Method 1
   insert(word){
     let i = 0;
-    let currNode;
+    
     if (!this.tree[word[i]]) this.tree[word[i]] = new Node(word[i]);
-    currNode = this.tree[word[i]];
+    let currNode = this.tree[word[i]];
     while (i < word.length - 1) {
       if (!currNode[word[i + 1]]) currNode[word[i + 1]] = new Node(word[i + 1]);
       currNode = currNode[word[i + 1]];
@@ -24,7 +24,7 @@ class Trie {
   search(word, fullMatch = true) {
     let i = 0;
     let currNode = this.tree[word[i]];
-    if (!this.wordCount || !this.tree[word[i]]) return false;
+    if (!this.tree[word[i]]) return false;
     else {
       while (i < word.length - 1) {
         if (!currNode[word[i + 1]]) return false;
@@ -40,7 +40,7 @@ class Trie {
     // this.search(prefix, false);
     let i = 0;
     let currNode = this.tree[prefix[i]];
-    if (!this.wordCount || !this.tree[prefix[i]]) return false;
+    if (!this.tree[prefix[i]]) return false;
     else {
       while (i < prefix.length - 1) {
         if (!currNode[prefix[i + 1]]) return false;
