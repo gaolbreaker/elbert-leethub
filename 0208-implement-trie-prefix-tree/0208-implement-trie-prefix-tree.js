@@ -38,20 +38,17 @@ class Trie {
   
   // Method 3
   startsWith(prefix) {
-    if (!this.wordCount) return false;
+    let i = 0;
+    let currNode = this.tree[prefix[i]];
+    if (!this.wordCount || !this.tree[prefix[i]]) return false;
     else {
-      let i = 0;
-      if (!this.tree[prefix[i]]) return false;
-      let currNode = this.tree[prefix[i]];
-      while (i < prefix.length) {
-        if (prefix[i + 1]) {
-          if (!currNode[prefix[i + 1]]) return false;
-        } 
+      while (i < prefix.length - 1) {
+        if (!currNode[prefix[i + 1]]) return false;
         currNode = currNode[prefix[i + 1]];
         i++;
       }
+      return true;
     }
-    return true;
   }
 }
 
