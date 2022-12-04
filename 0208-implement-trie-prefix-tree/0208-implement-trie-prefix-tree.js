@@ -9,38 +9,14 @@ class Trie {
   insert(word){
     let i = 0;
     let currNode;
-    // 1.a - Case of the first insertion:
-    if (!this.wordCount) {
-      this.tree[word[i]] = new Node(word[i]);
-      currNode = this.tree[word[i]];
-      while (i < word.length) {
-        if (word[i + 1]) {
-          currNode[word[i + 1]] = new Node(word[i + 1]);
-        } else {
-          currNode.end = true;
-        }
-        currNode = currNode[word[i + 1]];
-        i++;
-      }
+    if (!this.tree[word[i]]) this.tree[word[i]] = new Node(word[i]);
+    currNode = this.tree[word[i]];
+    while (i < word.length - 1) {
+      if (!currNode[word[i + 1]]) currNode[word[i + 1]] = new Node(word[i + 1]);
+      currNode = currNode[word[i + 1]];
+      i++;
     }
-    // 1.b - Case of subsequent insertions:
-    else {
-      if (!this.tree[word[i]]) {
-        this.tree[word[i]] = new Node(word[i]);
-      }
-      currNode = this.tree[word[i]];
-      while (i < word.length) {
-        if (word[i + 1]) {
-          if (!currNode[word[i + 1]]) {
-            currNode[word[i + 1]] = new Node(word[i + 1]);
-          }
-        } else {
-          currNode.end = true;
-        }
-        currNode = currNode[word[i + 1]];
-        i++;
-      }
-    }
+    currNode.end = true;
     this.wordCount++;
   }
   
