@@ -40,6 +40,7 @@ var mergeTwoLists = function(list1, list2) {
                      c2
   */
   
+  // edge cases:
   if (!list1) {
     return list2;
   }
@@ -47,6 +48,7 @@ var mergeTwoLists = function(list1, list2) {
     return list1;
   }
   
+  // general case:
   let resHead = null;
   let resCurrent = resHead;
   let c1 = list1;
@@ -77,7 +79,7 @@ var mergeTwoLists = function(list1, list2) {
   while (c1) {
     if (resCurrent) resCurrent.next = new ListNode(c1.val)
     else {
-      resHead = new ListNode(c1.val);
+      resHead = new ListNode(c1.val); // head is moving with current
       resCurrent = resHead;
     }
     resCurrent = resCurrent.next;
