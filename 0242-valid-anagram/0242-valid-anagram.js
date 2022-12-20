@@ -5,87 +5,52 @@
  */
 var isAnagram = function(s, t) {
   /*
-    Input: strings s and t
-    Output: boolean, true if s and t are anagrams, false otherwise
-    Constraints: 1 <= s.length, t.length <= 5 * 104
-                 s and t consist of lowercase English letters.
-    Edge Cases:
-    Example: 'stop' 'pots'
-    Pseudocode:
-      O(n^2) solution would be less optimized
+    U
+      I: two strings, s and t
+      O: boolean, true if anagrams, false otherwise
+    M: use a hash map to store frequencies
       
-      
-      
-      (done) create a hash map for each string to track the frequency of each letter
-      (done) iterate across each string to populate the hash maps
-      compare the frequencies of the letters in the two hash maps; if they are the same, return true
+    P
+      make frequency maps for both strings
+      compare the frequency maps
+      if doesn't match, return false
+    I
+    R
+    E
+    'anagram' 'nagaram'
+     a: 3
+     n: 1
+     g: 1
+     r: 1
+     m: 1
+    
   */
-  
-  /*
-    hashS = {
-      a: 3,
-      n: 1,
-      g: 1,
-      r: 1,
-      m: 1,
-    } 
-    
-    hashT = {
-      n: 1,
-      a: 3,
-      g: 1,
-      r: 1,
-      m: 1,
-    }
-    
-    Input: s = "anagram", t = "nagaram"
-    
-  
-  */
-  
-  const hashS = {};
-  const hashT = {};
-  let result = true;
-  
+  const freqMapS = {};
+  const freqMapT = {}
   for (let i = 0; i < s.length; i++) {
-    // s[i] is a char in the string
-    if (!hashS[s[i]]) {
-      hashS[s[i]] = 1;
+    if (!freqMapS[s[i]]) {
+      freqMapS[s[i]] = 1;
     } else {
-      hashS[s[i]]++;
+      freqMapS[s[i]]++;
     }
   }
   for (let i = 0; i < t.length; i++) {
-    // s[i] is a char in the string
-    if (!hashT[t[i]]) {
-      hashT[t[i]] = 1;
+    if (!freqMapT[t[i]]) {
+      freqMapT[t[i]] = 1;
     } else {
-      hashT[t[i]]++;
+      freqMapT[t[i]]++;
     }
   }
+  console.log(freqMapS);
+  console.log(freqMapT);
   
+  for (const key in freqMapS) {
+    if (freqMapS[key] !== freqMapT[key]) return false;
+  }
   
-  Object.keys(hashS).forEach((e) => {
-    if (hashT[e] === undefined) {
-      result = false;
-    }
-    else if (hashT[e] !== hashS[e]) result = false;
-  });
+  for (const key in freqMapT) {
+    if (freqMapS[key] !== freqMapT[key]) return false;
+  }
   
-  Object.keys(hashT).forEach((e) => {
-    if (hashS[e] === undefined) {
-      result = false;
-    }
-    else if (hashT[e] !== hashS[e]) result = false;
-  });
-  
-  console.log(hashS);
-  console.log(hashT);
-  
-  return result;
-  
-
-  // return;
-  
-  
+  return true;
 };
