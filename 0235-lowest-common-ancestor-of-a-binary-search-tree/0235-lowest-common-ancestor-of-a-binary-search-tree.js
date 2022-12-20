@@ -29,16 +29,15 @@ var lowestCommonAncestor = function(root, p, q) {
     
     function 
   */
+  
   if (!root) return null;
-  if (root === p) {
+  if (root === p || root === q) {
     if (contains(root.left, q) || contains(root.right, q)) return root;
-     
-  }
-  if (root === q) {
     if (contains(root.left, p) || contains(root.right, p)) return root; 
   }
-  if (contains(root.left, p) && contains(root.right, q)) return root;
-  if (contains(root.left, q) && contains(root.right, p)) return root;
+  if (contains(root.left, p) && contains(root.right, q) ||
+      contains(root.left, q) && contains(root.right, p)) return root;
+  
   
   return lowestCommonAncestor(root.left, p, q) || lowestCommonAncestor(root.right, p, q);
   
