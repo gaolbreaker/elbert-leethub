@@ -31,17 +31,21 @@ var floodFill = function(image, sr, sc, color) {
   function DFS(sr, sc) {
     if (sr < 0 || sr >= image.length || sc < 0 || sc >= image[0].length) return;
     if (image[sr][sc] !== startColor) return;
-    let isVisited = false;
-    for (const coords of visited) {
-      if (coords[0] === sr && coords[1] === sc) isVisited = true;
-    }
-    if (isVisited) return;
+    if (isVisited(sr, sc)) return;
     visited.push([sr, sc]);
     image[sr][sc] = color;
     DFS(sr + 1, sc);
     DFS(sr - 1, sc);
     DFS(sr, sc + 1);
     DFS(sr, sc - 1);
+  }
+  
+  function isVisited(sr, sc) {
+    let isVisited = false;
+    for (const coords of visited) { // use OF for arrays, and IN for objects
+      if (coords[0] === sr && coords[1] === sc) isVisited = true;
+    }
+    return isVisited;
   }
   
   return image;
