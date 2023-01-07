@@ -31,13 +31,23 @@ var checkRecord = function(s) {
           check for P
         return true
           
+          lCount = 3
+          LLPLLL
+               ^
     */
     
   let totalAbsences = 0;
+  let lCount = 0;
   for (let i = 0; i < s.length; i++) {
-    if (s[i-1] === 'L' && s[i] === 'L' && s[i+1] === 'L') return false;
+    if (s[i] === 'L') {
+      if (++lCount === 3) return false;
+    }
     if (s[i] === 'A') {
       if (++totalAbsences === 2) return false;
+      lCount = 0;
+    }
+    if (s[i] === 'P') {
+      lCount = 0;
     }
   }
   return true;
