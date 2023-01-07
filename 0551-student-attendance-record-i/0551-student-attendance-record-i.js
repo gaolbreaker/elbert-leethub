@@ -39,12 +39,12 @@ var checkRecord = function(s) {
   let totalAbsences = 0;
   let lCount = 0;
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === 'L') {
-      if (++lCount === 3) return false;
+    if (s[i] == 'L') {
+      if (++lCount == 3) return false;
       continue;
     }
-    if (s[i] === 'A') {
-      if (++totalAbsences === 2) return false;
+    if (s[i] == 'A') {
+      if (++totalAbsences == 2) return false;
     }
     lCount = 0;
   }
